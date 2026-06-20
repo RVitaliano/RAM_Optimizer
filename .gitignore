@@ -1,0 +1,23 @@
+# Ambiente virtual
+venv/
+venv
+
+# PyInstaller
+dist/
+build/
+*.spec
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Variáveis de ambiente
+.env
+
+# Docker
+.dockerignore
+
+# Sistema
+.DS_Store
+Thumbs.db
