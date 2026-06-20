@@ -18,10 +18,8 @@
 ## 🖥️ Interface
 
 <img width="416" height="615" alt="image" src="https://github.com/user-attachments/assets/85632ab8-8025-41b4-997b-af279eb80421" />
-
-<img width="346" height="334" alt="image" src="https://github.com/user-attachments/assets/232c0694-e386-4fac-899a-31d7cb82aef6" />
-
 <img width="255" height="53" alt="image" src="https://github.com/user-attachments/assets/a7bdfa3d-0709-45e8-843c-522ad19eb78c" />
+<img width="346" height="334" alt="image" src="https://github.com/user-attachments/assets/232c0694-e386-4fac-899a-31d7cb82aef6" />
 
 
 
