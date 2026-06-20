@@ -17,9 +17,9 @@
 
 ## 🖥️ Interface
 
-<p align="center">
-  <img src="assets/preview.png" width="400" alt="RAM Optimizer screenshot"/>
-</p>
+<img width="416" height="615" alt="image" src="https://github.com/user-attachments/assets/85632ab8-8025-41b4-997b-af279eb80421" />
+
+<img width="346" height="334" alt="image" src="https://github.com/user-attachments/assets/232c0694-e386-4fac-899a-31d7cb82aef6" />
 
 ---
 
