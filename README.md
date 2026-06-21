@@ -8,18 +8,17 @@
 
 - 📊 Monitoramento de RAM em tempo real com barra de progresso colorida
 - 🔋 Ícone na bandeja que muda de cor conforme o uso de RAM
-- ⚡ Otimização automática quando RAM ultrapassa o threshold configurado
-- 🎮 Detecção de jogos — pausa a otimização enquanto jogo estiver rodando
-- ⚙️ Janela de configurações integrada (sem precisar editar arquivos)
+- ⚡ Otimização suave — libera processos ociosos sem afetar o que está em uso
+- 🔥 Otimização agressiva — libera toda a memória possível, igual ao Reduce Memory
+- 🎮 Detecção de jogos — pausa a otimização automática e libera RAM ao abrir um jogo
+- 🔔 Notificações nativas do Windows ao otimizar em background
+- ⚙️ Janela de configurações com lista de jogos editável e barra de pesquisa
 - 🌙 Tema escuro
 
 ---
 
 ## 🖥️ Interface
 
-<p align="center">
-  <img src="assets/preview.png" width="400" alt="RAM Optimizer screenshot"/>
-</p>
 
 ---
 
@@ -32,10 +31,12 @@ RAM_Optimizer/
 │   ├── app.py         # Janela principal (customtkinter)
 │   ├── tray.py        # Ícone na bandeja (pystray)
 │   └── optimizer.py   # Lógica de otimização de RAM
-├── assets/            # Ícones gerados automaticamente
-├── .env               # Configurações do programa
+├── assets/
+│   └── icon.ico       # Ícone do programa
 ├── .gitignore
 ├── requirements.txt   # Dependências Python
+├── Dockerfile
+├── docker-compose.yml
 └── README.md
 ```
 
@@ -73,12 +74,12 @@ python src/main.py
 ## 📦 Como gerar o .exe
 
 ```bash
-
-# 1. Gera o executável
 pyinstaller --onefile --windowed --name "RAMOptimizer" --icon assets/icon.ico src/main.py
 ```
 
 O executável será gerado em `dist/RAMOptimizer.exe`.
+
+> O arquivo `assets/icon.ico` já está incluído no repositório.
 
 ---
 
@@ -88,20 +89,29 @@ O executável será gerado em `dist/RAMOptimizer.exe`.
 2. Digite `shell:startup` e aperte Enter
 3. Arraste o `RAMOptimizer.exe` para a pasta que abrir
 
-> Dessa forma o programa inicia automaticamente sem mexer no registro do Windows
+> O programa inicia automaticamente sem mexer no registro do Windows.
 
 ---
 
-## 🛠️ Configuração
+## ⚡ Modos de otimização
 
-Edite o arquivo `.env` na raiz do projeto ou use o botão **⚙ Configurações** dentro do programa:
+| Modo | Descrição |
+|------|-----------|
+| **Otimizar Agora** | Libera memória de processos ociosos (CPU < 1%). Seguro para uso durante jogos |
+| **Otimizar Agressivo** | Libera memória de todos os processos, igual ao Reduce Memory. Ideal para liberar RAM antes de jogar |
 
-| Variável         | Padrão        | Descrição                              |
-|------------------|---------------|----------------------------------------|
-| `APP_NAME`       | RAM Optimizer | Nome exibido na janela                 |
-| `RAM_THRESHOLD`  | 88            | % de RAM para disparar otimização      |
-| `MONITOR_INTERVAL` | 60          | Intervalo de monitoramento (segundos)  |
-| `GAME_PROCESSES` | Overwatch.exe, cs2.exe... | Lista de executáveis de jogos |
+---
+
+## 🎮 Detecção de jogos
+
+Quando um jogo da lista é detectado abrindo:
+
+1. O programa libera RAM automaticamente de forma preventiva
+2. Uma notificação do Windows é exibida
+3. A otimização automática fica pausada enquanto o jogo estiver rodando
+4. Ao fechar o jogo, o monitoramento volta ao normal
+
+A lista de jogos pode ser editada em **⚙ Configurações → Gerenciar jogos**, com barra de pesquisa e todos os processos ativos listados para seleção.
 
 ---
 
@@ -116,5 +126,38 @@ O ícone muda de cor automaticamente conforme o uso de RAM:
 | Até 60%    | 🟡 Amarelo   |
 | Até 75%    | 🟠 Laranja   |
 | Acima 75%  | 🔴 Vermelho  |
+
+Clique no ícone para abrir a janela. Clique direito para acessar o menu rápido.
+
+---
+
+## 🛠️ Configurações
+
+As configurações são salvas automaticamente em `%APPDATA%\RAMOptimizer\config.json` e podem ser alteradas pelo botão **⚙ Configurações** dentro do programa:
+
+| Configuração       | Padrão | Descrição                              |
+|--------------------|--------|----------------------------------------|
+| Threshold de RAM   | 88%    | % de RAM para disparar otimização      |
+| Intervalo          | 60s    | Intervalo de monitoramento             |
+| Processos de jogos | ...    | Lista de executáveis de jogos          |
+
+---
+
+## 📋 Changelog
+
+### v2.0
+- Correção de bug de múltiplas threads ao clicar rápido no botão otimizar
+- Intervalo de monitoramento agora atualiza em runtime sem reiniciar
+- Permissão reduzida no acesso a processos (`PROCESS_SET_QUOTA`)
+- Detecção de jogos movida para timer de 10s (era 1s — muito pesado)
+- Notificações nativas do Windows ao otimizar em background
+- Lista de jogos editável com barra de pesquisa e processos ativos
+- Limpeza preventiva de RAM ao detectar abertura de jogo
+- Novo botão **Otimizar Agressivo** — libera toda RAM possível igual ao Reduce Memory
+- Configurações salvas em JSON — sem dependência de arquivo `.env`
+- Fechar janela minimiza para bandeja em vez de encerrar
+
+### v1.0
+- Versão inicial
 
 ---
