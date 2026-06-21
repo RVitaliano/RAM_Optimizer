@@ -9,7 +9,7 @@
 - 📊 Monitoramento de RAM em tempo real com barra de progresso colorida
 - 🔋 Ícone na bandeja que muda de cor conforme o uso de RAM
 - ⚡ Otimização suave — libera processos ociosos sem afetar o que está em uso
-- 🔥 Otimização agressiva — libera toda a memória possível, igual ao Reduce Memory
+- 🔥 Otimização agressiva — libera toda a memória possível
 - 🎮 Detecção de jogos — pausa a otimização automática e libera RAM ao abrir um jogo
 - 🔔 Notificações nativas do Windows ao otimizar em background
 - ⚙️ Janela de configurações com lista de jogos editável e barra de pesquisa
@@ -98,7 +98,7 @@ O executável será gerado em `dist/RAMOptimizer.exe`.
 | Modo | Descrição |
 |------|-----------|
 | **Otimizar Agora** | Libera memória de processos ociosos (CPU < 1%). Seguro para uso durante jogos |
-| **Otimizar Agressivo** | Libera memória de todos os processos, igual ao Reduce Memory. Ideal para liberar RAM antes de jogar |
+| **Otimizar Agressivo** | Libera memória de todos os processos. Ideal para liberar RAM antes de jogar |
 
 ---
 
@@ -153,7 +153,7 @@ As configurações são salvas automaticamente em `%APPDATA%\RAMOptimizer\config
 - Notificações nativas do Windows ao otimizar em background
 - Lista de jogos editável com barra de pesquisa e processos ativos
 - Limpeza preventiva de RAM ao detectar abertura de jogo
-- Novo botão **Otimizar Agressivo** — libera toda RAM possível igual ao Reduce Memory
+- Novo botão **Otimizar Agressivo** — libera toda RAM possível
 - Configurações salvas em JSON — sem dependência de arquivo `.env`
 - Fechar janela minimiza para bandeja em vez de encerrar
 
