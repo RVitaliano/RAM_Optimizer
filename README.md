@@ -20,6 +20,9 @@
 
 ## 🖥️ Interface
 
+<img width="500" height="194" alt="image" src="https://github.com/user-attachments/assets/dd8bcfe9-eaf6-4cb4-8012-80e8e46d6e4a" />
+<br>
+<img width="359" height="395" alt="image" src="https://github.com/user-attachments/assets/d919b05b-ddc3-4703-8f94-80858d7127b0" />
 
 ---
 
